@@ -14,13 +14,50 @@
     gap: 2rem;
     top: 0;
     left: 0;
+
     padding: 0;
     width: fit-content;
     height: auto;
     transition: 0s;
+
   }
 
   .menu {
     display: none;
   }
+
+
+  footer {
+    margin-top: 100%;
+  }
+
+  #Btn {
+    display: none;
+    position: fixed;
+    bottom: 5em;
+    background: transparent;
+    border-radius: 10em;
+    border: none;
+    right: 5em;
+    z-index: 99;
+    color: var(--clr-fontcolor);
+    cursor: pointer;
+  }
+
+  #Btn .bx {
+    font-size: 1.5em;
+    padding: 0 0.1em;
+  }
+
+  .logo2 span {
+    font-size: 1.2em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .copyright {
+    color: var(--clr-fontcolor);
+    font-size: 0.9em;
+    font-family: 'Montserrat', sans-serif;
+  }
+
 }
