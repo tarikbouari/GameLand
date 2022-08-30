@@ -1,0 +1,30 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+ul li{
+  list-style: none;
+}
+:root {
+  --clr-primary: #353940;
+  --clr-background: #131619;
+  --clr-fontcolor: #ecf6ff;
+}
+
+body {
+  background-color: var(--clr-background);
+  color: var(--clr-fontcolor);
+}
+
+/*  header */
+
+header {
+  background-color: var(--clr-primary);
+  height: 70px;
+}
+
+nav {
+  display: flex;
+}
