@@ -24,6 +24,8 @@ body {
 header {
   background-color: var(--clr-primary);
   height: 70px;
+  display: flex;
+  align-items: center;
 }
 
 nav {
@@ -34,13 +36,21 @@ nav {
   width: 25px;
   height: 25px;
 }
-nav ul {
-
+.nav-ul {
   position: absolute;
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  top: 82px;
   left: -100%;
-  
+  background-color: var(--clr-primary);
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  top: 70px;
+  margin: 0 !important;
+  transition: left 0.5s;
+}
+
+.ul-toggle{
+  left:0;
 }
