@@ -54,6 +54,29 @@
     height: 40%;
   }
 
+  .btn-comment{
+    background-color: #363a4152;
+    padding: 0.1rem;
+    font-size: 0.8rem;
+    border-radius: 0.3rem;
+    color:var(--clr-fontcolor);
+    border: none;
+  }
+  .btn-reservation{
+    background-color: #363a414c;
+    padding: 0.1rem;  
+    font-size: 0.8rem;
+    border-radius: 0.3rem;
+    color: var(--clr-fontcolor) ;
+    border: none;
+    transition: background-color 0.5s;
+  }
+  
+  .btn-reservation:hover{
+    background-color: #00EF00;;
+    /* color: var(--clr-primary) ; */
+  }
+
   footer {
     
   }
@@ -85,6 +108,14 @@
     color: var(--clr-fontcolor);
     font-size: 0.9em;
     font-family: 'Montserrat', sans-serif;
+  }
+
+  .box-description span {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .like-text{
+    font-size: 0.7rem;
   }
 
 }
