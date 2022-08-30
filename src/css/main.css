@@ -28,8 +28,19 @@ header {
 
 nav {
   display: flex;
+  justify-content: space-between;
 }
 .icon {
   width: 25px;
   height: 25px;
+}
+nav ul {
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  top: 82px;
+  left: -100%;
+  
 }
