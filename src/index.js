@@ -11,7 +11,7 @@ function scrollFunction() {
   }
 }
 
-window.onscroll = function() { scrollFunction(); };
+window.onscroll = function () { scrollFunction(); };
 
 myButton.addEventListener('click', () => {
   document.body.scrollTop = 0;
