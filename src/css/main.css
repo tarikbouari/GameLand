@@ -4,9 +4,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-ul li{
+
+ul li {
   list-style: none;
 }
+
 :root {
   --clr-primary: #353940;
   --clr-background: #131619;
@@ -32,10 +34,12 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+
 .icon {
   width: 25px;
   height: 25px;
 }
+
 .nav-ul {
   position: absolute;
   display: flex;
@@ -51,6 +55,6 @@ nav {
   transition: left 0.5s;
 }
 
-.ul-toggle{
-  left:0;
+.ul-toggle {
+  left: 0;
 }

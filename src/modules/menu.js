@@ -1,7 +1,7 @@
-const menuIcon = document.getElementById("menu");
-const navUl = document.getElementById("nav-ul");
+const menuIcon = document.getElementById('menu');
+const navUl = document.getElementById('nav-ul');
 
-menuIcon.addEventListener("click", (e) => {
+menuIcon.addEventListener('click', (e) => {
   e.preventDefault();
-navUl.classList.toggle('ul-toggle');
+  navUl.classList.toggle('ul-toggle');
 });
