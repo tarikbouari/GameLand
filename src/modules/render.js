@@ -14,18 +14,24 @@ const loadCard = (games) => {
     divImg.appendChild(image);
 
     const box = document.createElement("div");
-    box.classList.add("box-likes");
+    box.classList.add("box-description", "text-wrap");
+
+    const boxIcon = document.createElement("div");
+    boxIcon.classList.add("box-icon");
 
     const h3 = document.createElement("span");
     h3.textContent = `${game.name}`;
 
-    const icon = document.createElement("i");
-    icon.classList.add("icon");
+    const icon = document.createElement("span");
+    icon.classList.add("material-symbols-outlined");
+    icon.textContent = "favorite";
 
     const span = document.createElement("span");
+    span.classList.add("like-text");
     span.textContent = `${game.id} likes`;
+    boxIcon.append(icon, span);
 
-    box.append(h3, span, icon);
+    box.append(h3);
 
     const comments = document.createElement("button");
     comments.classList.add("btn-comment", "mx-1");
@@ -35,7 +41,7 @@ const loadCard = (games) => {
     reservations.classList.add("btn-reservation", "mx-1");
     reservations.textContent = "Reservations";
 
-    div.append(divImg, box, comments, reservations);
+    div.append(divImg, box, boxIcon, comments, reservations);
 
     container.appendChild(div);
   });
