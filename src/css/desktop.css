@@ -1,0 +1,26 @@
+@media (min-width: 768px) {
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-bar ul {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: fit-content;
+    height: auto;
+    transition: 0s;
+  }
+
+  .menu {
+    display: none;
+  }
+}
