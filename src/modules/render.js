@@ -1,12 +1,20 @@
-import post from './post.js';
+import Post from './post.js';
 
 const container = document.getElementById('card-container');
 
+const getApi = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/AFFSRiO8tq3BNoRoizLk/comments?item_id=1';
+let count = 0;
 
+const getComment = async () => {
+  const response = await fetch(getApi);
+  const data = await response.json();
+  count = (data.length);
+};
 
-let gameId = 0;
+getComment();
+
 const loadCard = (games) => {
-  games.forEach((game) => {
+  games.forEach((game, id) => {
     const div = document.createElement('div');
     div.classList.add('box-card');
 
@@ -50,7 +58,6 @@ const loadCard = (games) => {
 
     container.appendChild(div);
 
-
     // comments
     comments.addEventListener('click', (e) => {
       e.preventDefault();
@@ -76,7 +83,6 @@ const loadCard = (games) => {
 
       const imagePop = document.createElement('img');
       imagePop.setAttribute('src', `${game.background_image}`);
-
 
       popClose.addEventListener('click', () => {
         commentsPop.style.display = 'none';
@@ -104,7 +110,9 @@ const loadCard = (games) => {
       const commentsShow = document.createElement('div');
       commentsShow.classList.add('comShow');
       commentsShow.innerHTML = `
-   <p>Comment(0)</p>`;
+      <p id="comment" >Comment(${count})</p>
+      <div class="Comments"></div>
+      `;
 
       const addComment = document.createElement('div');
       addComment.classList.add('addCom');
@@ -130,14 +138,14 @@ const loadCard = (games) => {
 
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        if (text.value && i.value === '') return;
+        if (text.value && i.value === '');
         const data = {
-           item_id: `${game.Id}`,
-           comment: text.value,
-           username: i.value,
+          item_id: id,
+          username: i.value,
+          comment: text.value,
         };
-        post(data);
-        console.log(data);
+        Post(data);
+        getComment();
         form.reset();
       });
       form.append(i, text, submit);
