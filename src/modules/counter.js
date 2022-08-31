@@ -1,15 +1,10 @@
-import { getGame } from "./api.js";
+import { getGame } from './api.js';
 
 const gameCounter = document.getElementById('games');
 
-const countgame = async () => {
-    const data = await getGame();
-    const count = data.length;
-    console.log(count);
-    gameCounter.textContent = `Games(${count})`
+export default async function countgame() {
+  const data = await getGame();
+  const count = data.length;
+  gameCounter.textContent = `Games(${count})`;
 }
 countgame();
-
-
-export {countgame}; 
-   
