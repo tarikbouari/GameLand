@@ -5,6 +5,7 @@ const container = document.getElementById("card-container");
 const loadCard = (games) => {
   //initialize id for everyCard
   let gameId = 0;
+
   // render every game
   games.forEach((game, gameId) => {
     const div = document.createElement("div");
@@ -34,8 +35,20 @@ const loadCard = (games) => {
     const span = document.createElement("span");
     span.classList.add("like-text");
 
+    const displaysLikes = async () => {
+      const storage = await getLikes();
+      
+      storage.filter((item) => {
+        const game = `game${gameId}`; 
+        if (item.item_id === game ){
+          console.log( item.likes);
+          span.textContent=`${item.likes} likes`
+        }  
+        return item.likes
+      });
+    }
+    displaysLikes();
     
-    span.textContent = `${gameId} likes`;
     boxIcon.append(iconLike, span);
 
     box.append(h3);
@@ -54,7 +67,7 @@ const loadCard = (games) => {
     gameId++;
     
 
-    // function like games
+    // function click likes buttom
     iconLike.addEventListener("click", (e) => {
       e.preventDefault();
       postLikes({
@@ -62,7 +75,7 @@ const loadCard = (games) => {
       });
       console.log(gameId);
 
-      // Async that get likes from API
+    // Async that get likes from API
       const displaysLikes = async () => {
       const storage = await getLikes();
       
@@ -72,21 +85,14 @@ const loadCard = (games) => {
           console.log( item.likes);
           span.textContent=`${item.likes} likes`
         }  
-        // return item.likes
+        return item.likes
       });
     }
     displaysLikes();
-      // Async that get likes from API
-      // displaysLikes();
-
-
     });
       
   });
 };
-
- 
-
 
   
 export { loadCard, container };
