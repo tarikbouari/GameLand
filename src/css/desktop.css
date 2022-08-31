@@ -24,6 +24,40 @@
     display: none;
   }
 
+
+  .banner {
+    background-image: url('/images/league.jpg');
+    height: 40vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1rem 3rem;
+    display: flex;
+  }
+
+  .left {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .left h1 {
+    font-size: 2rem;
+    width: 80%;
+  }
+  .left p {
+    width: 70%;
+  }
+  .left button {
+    width: fit-content;
+    padding: 0.3rem 2rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #00ef00;
+  }
+
   /* section-card */
   .card-container {
     display: grid;

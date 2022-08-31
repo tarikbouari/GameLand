@@ -65,26 +65,27 @@ nav {
 
 .banner {
   background-image: url('/images/league.jpg');
-  height: 40vh;
+  height: auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 1rem 3rem;
+  padding: 1rem 1rem;
   display: flex;
 }
 
-
 .left {
-  width: 40%;
+  width: auto;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.left h1{
-  font-size:2rem;
+
+.left h1 {
+  font-size: 2rem;
   width: 80%;
 }
-.left button{
+
+.left button {
   width: fit-content;
   padding: 0.3rem 2rem;
   border: none;
