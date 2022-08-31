@@ -7,4 +7,6 @@ export default async function () {
   const jsonData = await res.json();
   const gameData = jsonData.results;
   loadCard(gameData);
+  const Comments = document.querySelector('.Comments');
+  console.log(Comments);
 }
