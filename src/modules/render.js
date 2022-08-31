@@ -44,7 +44,90 @@ const loadCard = (games) => {
     div.append(divImg, box, boxIcon, comments, reservations);
 
     container.appendChild(div);
+
+     // comments
+     comments.addEventListener('click', (e)=>{
+      e.preventDefault();
+  const commentsPop = document.querySelector('.comments-pop')
+  const popup = document.createElement('div')
+   popup.classList.add('comment-popup');
+
+   const popupChild = document.createElement('div');
+   popupChild.classList.add('comment-child');
+
+   const popupCard = document.createElement('div');
+   popupCard.classList.add('popupCard');
+
+   const ImageDiv = document.createElement('div');
+   ImageDiv.classList.add('imagePopBox');
+
+   const imagePop = document.createElement('img');
+   imagePop.setAttribute('src', `${game.background_image}`);
+   
+   const popClose = document.createElement('div');
+   popClose.classList.add('popClose');
+   popClose.innerHTML = `
+   <i class='bx bx-x-circle bx-tad'></i>
+  `;
+   
+  const title = document.createElement('span');
+  title.classList.add('titlePop');
+  title.innerText = `${game.name}`
+
+  const details = document.createElement('div');
+  details.classList.add('details');
+  const detail = document.createElement('ul');
+  detail.innerHTML = `<li>released date: ${game.released}</li>
+  <li>playtime: ${game.playtime}</li>
+  <li>rating: ${game.rating}</li>
+  <li>Updated: ${game.updated}</li>`
+
+  details.append(detail);
+  
+
+   const commentsCard = document.createElement('div')
+   commentsCard.classList.add('comCard');
+   const comTitle = document.createElement('span');
+   comTitle.textContent = 'Comments';
+   const commentsShow = document.createElement('div');
+   commentsShow.classList.add('comShow');
+   commentsShow.innerHTML = `
+   <p>Comment(0)</p>`
+
+   const addComment = document.createElement('div');
+   addComment.classList.add('addCom');
+
+   const addComTitle = document.createElement('span');
+   addComTitle.textContent = 'Add your comments';
+
+   const form = document.createElement('form');
+   form.classList.add('form')
+   form.setAttribute('method', 'post');
+
+   const i = document.createElement('input');
+   i.setAttribute('type', 'text');
+   i.setAttribute('name', 'username')
+
+   const text = document.createElement('textarea');
+   text.setAttribute('type', 'text');
+
+   const submit = document.createElement('input');
+   submit.setAttribute('type', 'submit');
+   submit.setAttribute('value', 'Submit')
+
+   form.append(i, text, submit);
+  addComment.append(addComTitle,form);
+   commentsCard.append(comTitle, commentsShow, addComment);
+   popupCard.append(ImageDiv, title, details, commentsCard); 
+   ImageDiv.append(imagePop, popClose);
+   popupChild.append(popupCard);
+   popup.append(popupChild);
+   commentsPop.appendChild(popup);
+
+  })
   });
 };
 
+
+ 
 export { loadCard, container };
