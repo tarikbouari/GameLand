@@ -63,28 +63,30 @@ const loadCard = (games) => {
       console.log(gameId);
 
       // Async that get likes from API
+      const displaysLikes = async () => {
+      const storage = await getLikes();
+      
+      storage.filter((item) => {
+        const game = `game${gameId}`; 
+        if (item.item_id === game ){
+          console.log( item.likes);
+          span.textContent=`${item.likes} likes`
+        }  
+        // return item.likes
+      });
+    }
+    displaysLikes();
+      // Async that get likes from API
       // displaysLikes();
 
 
     });
-      return span;
+      
   });
 };
 
  
 
-// Async that get likes from API
-    const displaysLikes = async () => {
-      const storage = await getLikes();
-      // const wait = await loadCard();
-      storage.forEach((item) => {
-        console.log(item.likes)
-        
-      });
-    }
-    displaysLikes();
-    // const waitLoad = async () => {
-    //   const wait = await
-    // }
- 
+
+  
 export { loadCard, container };
