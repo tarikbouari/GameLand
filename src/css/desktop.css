@@ -18,14 +18,13 @@
     width: fit-content;
     height: auto;
     transition: 0s;
-
   }
 
   .menu {
     display: none;
   }
 
-  /*section-card */
+  /* section-card */
   .card-container {
     display: grid;
     grid-template-columns: 1fr  1fr 1fr 1fr;
@@ -33,52 +32,47 @@
     padding: 1rem;
   }
 
-  
-
-  .box-card { 
+  .box-card {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     border-radius: 0.5em;
-    
   }
 
-  .img-box img{
+  .img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 0.5rem 0.5rem 0 0;
   }
 
-  .img-box{
+  .img-box {
     height: 40%;
   }
 
-  .btn-comment{
+  .btn-comment {
     background-color: #363a4152;
     padding: 0.1rem;
     font-size: 0.8rem;
     border-radius: 0.3rem;
-    color:var(--clr-fontcolor);
+    color: var(--clr-fontcolor);
     border: none;
   }
-  .btn-reservation{
+
+  .btn-reservation {
     background-color: #363a414c;
-    padding: 0.1rem;  
+    padding: 0.1rem;
     font-size: 0.8rem;
     border-radius: 0.3rem;
-    color: var(--clr-fontcolor) ;
+    color: var(--clr-fontcolor);
     border: none;
     transition: background-color 0.5s;
   }
-  
-  .btn-reservation:hover{
-    background-color: #00EF00;;
-    /* color: var(--clr-primary) ; */
-  }
 
-  footer {
-    
+  .btn-reservation:hover {
+    background-color: #00ef00;
+
+    /* color: var(--clr-primary) ; */
   }
 
   #Btn {
@@ -114,8 +108,8 @@
     font-size: 1rem;
     font-weight: 500;
   }
-  .like-text{
+
+  .like-text {
     font-size: 0.7rem;
   }
-
 }
