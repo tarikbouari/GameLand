@@ -1,3 +1,4 @@
+
 import Post from './post.js';
 
 const container = document.getElementById('card-container');
@@ -24,7 +25,8 @@ const loadCard = (games) => {
     const image = document.createElement('img');
     image.setAttribute('src', `${game.background_image}`);
 
-    divImg.appendChild(image);
+      const divImg = document.createElement('div');
+      divImg.classList.add('img-box');
 
     const box = document.createElement('div');
     box.classList.add('box-description', 'text-wrap');
@@ -44,7 +46,9 @@ const loadCard = (games) => {
     span.textContent = `${game.id} likes`;
     boxIcon.append(icon, span);
 
-    box.append(h3);
+      const iconLike = document.createElement('span');
+      iconLike.classList.add('material-symbols-outlined');
+      iconLike.textContent = 'favorite';
 
     const comments = document.createElement('button');
     comments.classList.add('btn-comment', 'mx-1');
@@ -54,7 +58,15 @@ const loadCard = (games) => {
     reservations.classList.add('btn-reservation', 'mx-1');
     reservations.textContent = 'Reservations';
 
-    div.append(divImg, box, boxIcon, comments, reservations);
+        storage.filter((item) => {
+          const game = `game${gameId}`;
+          if (item.item_id === game) {
+            span.textContent = `${item.likes} likes`;
+          }
+          return item.likes;
+        });
+      };
+      displaysLikes();
 
     container.appendChild(div);
 
