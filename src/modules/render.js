@@ -110,9 +110,9 @@ const loadCard = (games) => {
       const commentsShow = document.createElement('div');
       commentsShow.classList.add('comShow');
       commentsShow.innerHTML = `
-      <p id="comment" >Comment(${count})</p>
-      <div class="Comments"></div>
-      `;
+       <p id="comment" >Comment(${count})</p>
+       <div class="Comments"></div>
+       `;
 
       const addComment = document.createElement('div');
       addComment.classList.add('addCom');
@@ -145,7 +145,7 @@ const loadCard = (games) => {
           comment: text.value,
         };
         Post(data);
-        getComment();
+        // getComment();
         form.reset();
       });
       form.append(i, text, submit);
