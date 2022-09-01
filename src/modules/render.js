@@ -1,7 +1,11 @@
 import { postLikes, getLikes, getGame } from './api.js';
+import PostComment from './postComment.js';
 
 const container = document.getElementById('card-container');
 
+let count = 0;
+
+// getComment();
 const loadCard = () => {
   // initialize id for everyCard
 
@@ -138,11 +142,18 @@ const loadCard = () => {
         comTitle.textContent = 'Comments';
         const commentsShow = document.createElement('div');
         commentsShow.classList.add('comShow');
-        commentsShow.innerHTML = `
-        <p id="comment" >Comment()</p>
-        <div class="Comments"></div>
-        `;
 
+        const getComment = async (gameId) => {
+          const getApi = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/AFFSRiO8tq3BNoRoizLk/comments?item_id=${gameId}`;
+          const response = await fetch(getApi);
+          const data = await response.json();
+          count = (data.length);
+          commentsShow.innerHTML = `
+          <p id="comment">Comment(${!count ? 0 : count})</p> 
+          `;
+        };
+
+        getComment(gameId);
         const addComment = document.createElement('div');
         addComment.classList.add('addCom');
 
@@ -169,15 +180,19 @@ const loadCard = () => {
           e.preventDefault();
           if (text.value && i.value === '');
           const data = {
-            item_id: `game${gameId}`,
+            item_id: gameId,
             username: i.value,
             comment: text.value,
           };
+          PostComment(data);
+          // console.log(data);
+          // getComment(gameId);
+          // console.log(gameId)
           form.reset();
-          return data;
         });
         form.append(i, text, submit);
         addComment.append(addComTitle, form);
+        // commentsShow.append(CommentDiv);
         commentsCard.append(comTitle, commentsShow, addComment);
         ImageDiv.append(imagePop);
         popupCard.append(ImageDiv, title, details, commentsCard, popClose);
