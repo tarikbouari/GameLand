@@ -148,14 +148,12 @@ const loadCard = () => {
           const response = await fetch(getApi);
           const data = await response.json();
           count = (data.length);
-          // console.log(count);
-          console.log(data);
           commentsShow.innerHTML = `
-          <p id="comment">Comment(${count})</p> 
+          <p id="comment">Comment(${!count ? 0 : count})</p> 
           `;
         };
+
         getComment(gameId);
-        commentsShow.innerHTML = '<div class="Comments"></div>';
         const addComment = document.createElement('div');
         addComment.classList.add('addCom');
 
@@ -188,12 +186,13 @@ const loadCard = () => {
           };
           PostComment(data);
           // console.log(data);
-          getComment(gameId);
+          // getComment(gameId);
           // console.log(gameId)
           form.reset();
         });
         form.append(i, text, submit);
         addComment.append(addComTitle, form);
+        // commentsShow.append(CommentDiv);
         commentsCard.append(comTitle, commentsShow, addComment);
         ImageDiv.append(imagePop);
         popupCard.append(ImageDiv, title, details, commentsCard, popClose);
