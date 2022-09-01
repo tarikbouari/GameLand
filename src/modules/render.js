@@ -1,8 +1,12 @@
 
+
 const container = document.getElementById('card-container');
 
 const loadCard = (games) => {
+
   games.forEach((game) => {
+
+
     const div = document.createElement('div');
     div.classList.add('box-card');
 
@@ -11,12 +15,8 @@ const loadCard = (games) => {
 
     const image = document.createElement('img');
     image.setAttribute('src', `${game.background_image}`);
-List.add('box-card');
-
-      const divImg = document.createElement('div');
-      divImg.classList.add('img-box');
-
-
+    
+    divImg.appendChild(image);
     const box = document.createElement('div');
     box.classList.add('box-description', 'text-wrap');
 
@@ -35,21 +35,29 @@ List.add('box-card');
     span.textContent = `${game.id} likes`;
     boxIcon.append(icon, span);
 
+    box.append(h3);
+
 
       const iconLike = document.createElement('span');
       iconLike.classList.add('material-symbols-outlined');
       iconLike.textContent = 'favorite';
 
+      const comments = document.createElement('button');
+      comments.classList.add('btn-comment', 'mx-1');
+      comments.textContent = 'Comments';
+  
+      const reservations = document.createElement('button');
+      reservations.classList.add('btn-reservation', 'mx-1');
+      reservations.textContent = 'Reservations';
+  
+      div.append(divImg, box, boxIcon, comments, reservations);
+  
+      container.appendChild(div);
 
-    const comments = document.createElement('button');
-    comments.classList.add('btn-comment', 'mx-1');
-    comments.textContent = 'Comments';
-
-    const reservations = document.createElement('button');
-    reservations.classList.add('btn-reservation', 'mx-1');
-    reservations.textContent = 'Reservations';
 
 
+    const displaysLikes = async () => {
+      const storage = await getLikes();
         storage.filter((item) => {
           const game = `game${gameId}`;
           if (item.item_id === game) {
@@ -57,7 +65,8 @@ List.add('box-card');
           }
           return item.likes;
         });
-      };
+      
+
       displaysLikes();
 
       boxIcon.append(iconLike, span);
@@ -96,11 +105,17 @@ List.add('box-card');
             return item.likes;
           });
         };
-        displaysLikes();
-      });
-    });
-  };
-  getGameData();
+
+        displaysLikes();  
+   
+   
+      })
 };
+
+  } )
+}
+
+
+
 
 export { loadCard, container };

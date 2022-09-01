@@ -69,7 +69,6 @@
     transition: background-color 0.5s;
   }
 
-
   .btn-reservation:hover {
     background-color: #00ef00;
 
@@ -78,7 +77,6 @@
 
   footer {
     margin: 0;
-
   }
 
   #Btn {
