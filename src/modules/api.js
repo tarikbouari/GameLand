@@ -10,3 +10,4 @@ export default async function () {
   const Comments = document.querySelector('.Comments');
   console.log(Comments);
 }
+
