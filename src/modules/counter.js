@@ -1,3 +1,4 @@
+
 import { getGame } from './api.js';
 
 const gameCounter = document.getElementById('games');
@@ -8,3 +9,5 @@ export default async function countgame() {
   gameCounter.textContent = `Games(${count})`;
 }
 countgame();
+
+ };

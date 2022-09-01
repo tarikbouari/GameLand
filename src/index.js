@@ -1,13 +1,15 @@
 import './css/main.css';
 import './css/desktop.css';
 import './modules/menu.js';
+
 import { getLikes } from './modules/api.js';
 import { loadCard } from './modules/render.js';
 import countgame from './modules/counter.js';
 
-loadCard();
 
-getLikes();
+import getGame from './modules/api.js';
+
+getGame();
 
 countgame();
 const myButton = document.getElementById('Btn');
