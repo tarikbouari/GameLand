@@ -1,3 +1,4 @@
+
 const container = document.getElementById('card-container');
 
 const loadCard = (games) => {
@@ -10,8 +11,11 @@ const loadCard = (games) => {
 
     const image = document.createElement('img');
     image.setAttribute('src', `${game.background_image}`);
+List.add('box-card');
 
-    divImg.appendChild(image);
+      const divImg = document.createElement('div');
+      divImg.classList.add('img-box');
+
 
     const box = document.createElement('div');
     box.classList.add('box-description', 'text-wrap');
@@ -31,7 +35,11 @@ const loadCard = (games) => {
     span.textContent = `${game.id} likes`;
     boxIcon.append(icon, span);
 
-    box.append(h3);
+
+      const iconLike = document.createElement('span');
+      iconLike.classList.add('material-symbols-outlined');
+      iconLike.textContent = 'favorite';
+
 
     const comments = document.createElement('button');
     comments.classList.add('btn-comment', 'mx-1');
@@ -41,10 +49,58 @@ const loadCard = (games) => {
     reservations.classList.add('btn-reservation', 'mx-1');
     reservations.textContent = 'Reservations';
 
-    div.append(divImg, box, boxIcon, comments, reservations);
 
-    container.appendChild(div);
-  });
+        storage.filter((item) => {
+          const game = `game${gameId}`;
+          if (item.item_id === game) {
+            span.textContent = `${item.likes} likes`;
+          }
+          return item.likes;
+        });
+      };
+      displaysLikes();
+
+      boxIcon.append(iconLike, span);
+
+      box.append(h3);
+
+      const comments = document.createElement('button');
+      comments.classList.add('btn-comment', 'mx-1');
+      comments.textContent = 'Comments';
+
+      const reservations = document.createElement('button');
+      reservations.classList.add('btn-reservation', 'mx-1');
+      reservations.textContent = 'Reservations';
+
+      div.append(divImg, box, boxIcon, comments, reservations);
+
+      container.appendChild(div);
+      gameId += 1;
+
+      // function click likes buttom
+      iconLike.addEventListener('click', (e) => {
+        e.preventDefault();
+        postLikes({
+          item_id: `game${gameId}`,
+        });
+
+        // Async that get likes from API
+        const displaysLikes = async () => {
+          const storage = await getLikes();
+
+          storage.filter((item) => {
+            const game = `game${gameId}`;
+            if (item.item_id === game) {
+              span.textContent = `${item.likes} likes`;
+            }
+            return item.likes;
+          });
+        };
+        displaysLikes();
+      });
+    });
+  };
+  getGameData();
 };
 
 export { loadCard, container };
