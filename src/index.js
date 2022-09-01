@@ -1,12 +1,10 @@
 import './css/main.css';
 import './css/desktop.css';
 import './modules/menu.js';
-import { getLikes } from './modules/api.js';
-import { loadCard } from './modules/render.js';
 
-loadCard();
+import getGame from './modules/api.js';
 
-getLikes();
+getGame();
 
 const myButton = document.getElementById('Btn');
 

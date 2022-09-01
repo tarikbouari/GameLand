@@ -75,6 +75,10 @@
     /* color: var(--clr-primary) ; */
   }
 
+  footer {
+    margin: 0;
+  }
+
   #Btn {
     display: none;
     position: fixed;

@@ -1,95 +1,51 @@
-import { postLikes, getLikes, getGame } from './api.js';
-
 const container = document.getElementById('card-container');
 
-const loadCard = () => {
-  // initialize id for everyCard
+const loadCard = (games) => {
+  games.forEach((game) => {
+    const div = document.createElement('div');
+    div.classList.add('box-card');
 
-  const getGameData = async () => {
-    const games = await getGame();
-    // render every game
-    games.forEach((game, gameId) => {
-      const div = document.createElement('div');
-      div.classList.add('box-card');
+    const divImg = document.createElement('div');
+    divImg.classList.add('img-box');
 
-      const divImg = document.createElement('div');
-      divImg.classList.add('img-box');
+    const image = document.createElement('img');
+    image.setAttribute('src', `${game.background_image}`);
 
-      const image = document.createElement('img');
-      image.setAttribute('src', `${game.background_image}`);
+    divImg.appendChild(image);
+    const box = document.createElement('div');
+    box.classList.add('box-description', 'text-wrap');
 
-      divImg.appendChild(image);
+    const boxIcon = document.createElement('div');
+    boxIcon.classList.add('box-icon');
 
-      const box = document.createElement('div');
-      box.classList.add('box-description', 'text-wrap');
+    const h3 = document.createElement('span');
+    h3.textContent = `${game.name}`;
 
-      const boxIcon = document.createElement('div');
-      boxIcon.classList.add('box-icon');
+    const icon = document.createElement('span');
+    icon.classList.add('material-symbols-outlined');
+    icon.textContent = 'favorite';
 
-      const h3 = document.createElement('span');
-      h3.textContent = `${game.name}`;
+    const span = document.createElement('span');
+    span.classList.add('like-text');
+    span.textContent = `${game.id} likes`;
+    boxIcon.append(icon, span);
 
-      const iconLike = document.createElement('span');
-      iconLike.classList.add('material-symbols-outlined');
-      iconLike.textContent = 'favorite';
+    box.append(h3);
 
-      const span = document.createElement('span');
-      span.classList.add('like-text');
+    const comments = document.createElement('button');
+    comments.classList.add('btn-comment', 'mx-1');
+    comments.textContent = 'Comments';
 
-      const displaysLikes = async () => {
-        const storage = await getLikes();
+    const reservations = document.createElement('button');
+    reservations.classList.add('btn-reservation', 'mx-1');
+    reservations.textContent = 'Reservations';
 
-        storage.filter((item) => {
-          const game = `game${gameId}`;
-          if (item.item_id === game) {
-            span.textContent = `${item.likes} likes`;
-          }
-          return item.likes;
-        });
-      };
-      displaysLikes();
+    box.append(h3);
 
-      boxIcon.append(iconLike, span);
+    div.append(divImg, box, boxIcon, comments, reservations);
 
-      box.append(h3);
-
-      const comments = document.createElement('button');
-      comments.classList.add('btn-comment', 'mx-1');
-      comments.textContent = 'Comments';
-
-      const reservations = document.createElement('button');
-      reservations.classList.add('btn-reservation', 'mx-1');
-      reservations.textContent = 'Reservations';
-
-      div.append(divImg, box, boxIcon, comments, reservations);
-
-      container.appendChild(div);
-      gameId += 1;
-
-      // function click likes buttom
-      iconLike.addEventListener('click', (e) => {
-        e.preventDefault();
-        postLikes({
-          item_id: `game${gameId}`,
-        });
-
-        // Async that get likes from API
-        const displaysLikes = async () => {
-          const storage = await getLikes();
-
-          storage.filter((item) => {
-            const game = `game${gameId}`;
-            if (item.item_id === game) {
-              span.textContent = `${item.likes} likes`;
-            }
-            return item.likes;
-          });
-        };
-        displaysLikes();
-      });
-    });
-  };
-  getGameData();
+    container.appendChild(div);
+  });
 };
 
 export { loadCard, container };
