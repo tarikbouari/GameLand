@@ -1,4 +1,14 @@
 
+::-webkit-scrollbar {
+  width: 5px;
+  margin-left: -2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary);
+  border-radius: 20px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -130,6 +140,135 @@ nav {
 
 .material-symbols-outlined {
   color: #00ef00;
+}
+
+/* comments */
+
+.comments-popup {
+  display: none;
+}
+
+.comment-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  backdrop-filter: blur(5px);
+  background-color: rgba(53, 57, 64, 0.26);
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  height: 100vh;
+  width: 100%;
+}
+
+.comment-close {
+  display: none;
+}
+
+.comment-child {
+  background-color: rgba(19, 22, 25, 0.966);
+  display: flex;
+  margin: 0 auto;
+  margin-top: 25%;
+  flex-direction: column;
+  width: 350px;
+  height: 80%;
+  padding: 1em 0.4em;
+  overflow-y: scroll;
+  border-radius: 1em;
+  gap: 10px;
+}
+
+.popupCard {
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imagePopBox {
+  height: 50%;
+  gap: 10px;
+  padding: 1em 1em;
+  justify-content: center;
+  display: flex;
+}
+
+.imagePopBox img {
+  width: 95%;
+  padding: 1em 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popClose {
+  position: relative;
+  bottom: 97%;
+  left: 95%;
+}
+
+.popClose .bx-x-circle {
+  font-size: 30px;
+  color: var(--clr-fontcolor);
+}
+
+.titlePop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.details {
+  display: flex;
+  align-content: flex-start;
+}
+
+.detail {
+  display: grid;
+  margin-left: -1.4em;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 10px;
+  color: rgb(0, 239, 0);
+  font-size: 0.8em;
+}
+
+.comCard {
+  padding: 0.1em 0.7em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+input {
+  background: transparent;
+  outline: none;
+  border: 1px solid #353940;
+  padding: 0.5em 0;
+  color: var(--clr-fontcolor);
+}
+
+textarea {
+  background: transparent;
+  padding: 0.9em 0;
+  outline: none;
+  color: var(--clr-fontcolor);
+}
+
+.submit {
+  background-color: var(--clr-primary);
+  padding: 0.5em 0;
+  color: var(--clr-fontcolor);
+  border-radius: 0.3em;
+}
+
+.CloseBtn {
+  display: none;
 }
 
 /* footer */
