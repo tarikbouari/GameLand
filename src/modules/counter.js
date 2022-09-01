@@ -1,7 +1,10 @@
-// const Counter = (id) => {
-//   const comment = document.querySelector('#comment');
-//   comment.innerText = (`${id}`);
-//   console.log(id);
-// };
+import { getGame } from './api.js';
 
-// export default Counter;
+const gameCounter = document.getElementById('games');
+
+export default async function countgame() {
+  const data = await getGame();
+  const count = data.length;
+  gameCounter.textContent = `Games(${count})`;
+}
+countgame();

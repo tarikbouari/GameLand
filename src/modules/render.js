@@ -1,151 +1,193 @@
-import Post from './post.js';
+import { postLikes, getLikes, getGame } from './api.js';
 
 const container = document.getElementById('card-container');
 
-const loadCard = (games) => {
-  games.forEach((game, id) => {
-    const div = document.createElement('div');
-    div.classList.add('box-card');
+const loadCard = () => {
+  // initialize id for everyCard
 
-    const divImg = document.createElement('div');
-    divImg.classList.add('img-box');
+  const getGameData = async () => {
+    const games = await getGame();
+    // render every game
+    games.forEach((game, gameId) => {
+      const div = document.createElement('div');
+      div.classList.add('box-card');
 
-    const image = document.createElement('img');
-    image.setAttribute('src', `${game.background_image}`);
+      const divImg = document.createElement('div');
+      divImg.classList.add('img-box');
 
-    divImg.appendChild(image);
+      const image = document.createElement('img');
+      image.setAttribute('src', `${game.background_image}`);
 
-    const box = document.createElement('div');
-    box.classList.add('box-description', 'text-wrap');
+      divImg.appendChild(image);
 
-    const boxIcon = document.createElement('div');
-    boxIcon.classList.add('box-icon');
+      const box = document.createElement('div');
+      box.classList.add('box-description', 'text-wrap');
 
-    const h3 = document.createElement('span');
-    h3.textContent = `${game.name}`;
+      const boxIcon = document.createElement('div');
+      boxIcon.classList.add('box-icon');
 
-    const icon = document.createElement('span');
-    icon.classList.add('material-symbols-outlined');
-    icon.textContent = 'favorite';
+      const h3 = document.createElement('span');
+      h3.textContent = `${game.name}`;
 
-    const span = document.createElement('span');
-    span.classList.add('like-text');
-    span.textContent = `${game.id} likes`;
-    boxIcon.append(icon, span);
+      const iconLike = document.createElement('span');
+      iconLike.classList.add('material-symbols-outlined');
+      iconLike.textContent = 'favorite';
 
-    box.append(h3);
+      const span = document.createElement('span');
+      span.classList.add('like-text');
 
-    const comments = document.createElement('button');
-    comments.classList.add('btn-comment', 'mx-1');
-    comments.textContent = 'Comments';
+      const displaysLikes = async () => {
+        const storage = await getLikes();
 
-    const reservations = document.createElement('button');
-    reservations.classList.add('btn-reservation', 'mx-1');
-    reservations.textContent = 'Reservations';
+        storage.filter((item) => {
+          const game = `game${gameId}`;
+          if (item.item_id === game) {
+            span.textContent = `${item.likes} likes`;
+          }
+          return item.likes;
+        });
+      };
+      displaysLikes();
 
-    div.append(divImg, box, boxIcon, comments, reservations);
+      boxIcon.append(iconLike, span);
 
-    container.appendChild(div);
+      box.append(h3);
 
-    // comments
-    comments.addEventListener('click', (e) => {
-      e.preventDefault();
-      const commentsPop = document.querySelector('.comments-pop');
-      commentsPop.style.display = 'block';
-      const popup = document.createElement('div');
-      popup.classList.add('comment-popup');
+      const comments = document.createElement('button');
+      comments.classList.add('btn-comment', 'mx-1');
+      comments.textContent = 'Comments';
 
-      const popupChild = document.createElement('div');
-      popupChild.classList.add('comment-child');
+      const reservations = document.createElement('button');
+      reservations.classList.add('btn-reservation', 'mx-1');
+      reservations.textContent = 'Reservations';
 
-      const popupCard = document.createElement('div');
-      popupCard.classList.add('popupCard');
+      div.append(divImg, box, boxIcon, comments, reservations);
 
-      const ImageDiv = document.createElement('div');
-      ImageDiv.classList.add('imagePopBox');
+      container.appendChild(div);
+      gameId += 1;
 
-      const popClose = document.createElement('div');
-      popClose.classList.add('popClose');
-      popClose.innerHTML = `
-   <i class='bx bx-x-circle bx-tad'></i>
-  `;
-
-      const imagePop = document.createElement('img');
-      imagePop.setAttribute('src', `${game.background_image}`);
-
-      popClose.addEventListener('click', () => {
-        commentsPop.style.display = 'none';
-      });
-
-      const title = document.createElement('span');
-      title.classList.add('titlePop');
-      title.innerText = `${game.name}`;
-
-      const details = document.createElement('div');
-      details.classList.add('details');
-      const detail = document.createElement('ul');
-      detail.classList.add('detail');
-      detail.innerHTML = `<li>released date: ${game.released}</li>
-  <li>playtime: ${game.playtime}</li>
-  <li>rating: ${game.rating}</li>
-  <li>Updated: ${game.updated}</li>`;
-
-      details.append(detail);
-
-      const commentsCard = document.createElement('div');
-      commentsCard.classList.add('comCard');
-      const comTitle = document.createElement('span');
-      comTitle.textContent = 'Comments';
-      const commentsShow = document.createElement('div');
-      commentsShow.classList.add('comShow');
-      commentsShow.innerHTML = `
-      <p id="comment" >Comment()</p>
-      <div class="Comments"></div>
-      `;
-
-      const addComment = document.createElement('div');
-      addComment.classList.add('addCom');
-
-      const addComTitle = document.createElement('span');
-      addComTitle.textContent = 'Add your comments';
-
-      //  creation of forms
-      const form = document.createElement('form');
-
-      const i = document.createElement('input');
-      i.setAttribute('type', 'text');
-      i.setAttribute('name', 'username');
-
-      const text = document.createElement('textarea');
-      text.setAttribute('type', 'text');
-      text.setAttribute('value', 'input comment');
-
-      const submit = document.createElement('input');
-      submit.classList.add('submit');
-      submit.setAttribute('type', 'submit');
-      submit.setAttribute('value', 'Submit');
-
-      form.addEventListener('submit', (e) => {
+      // function click likes buttom
+      iconLike.addEventListener('click', (e) => {
         e.preventDefault();
-        if (text.value && i.value === '');
-        const data = {
-          item_id: id,
-          username: i.value,
-          comment: text.value,
+        postLikes({
+          item_id: `game${gameId}`,
+        });
+
+        // Async that get likes from API
+        const displaysLikes = async () => {
+          const storage = await getLikes();
+
+          storage.filter((item) => {
+            const game = `game${gameId}`;
+            if (item.item_id === game) {
+              span.textContent = `${item.likes} likes`;
+            }
+            return item.likes;
+          });
         };
-        Post(data);
-        form.reset();
+        displaysLikes();
       });
-      form.append(i, text, submit);
-      addComment.append(addComTitle, form);
-      commentsCard.append(comTitle, commentsShow, addComment);
-      ImageDiv.append(imagePop);
-      popupCard.append(ImageDiv, title, details, commentsCard, popClose);
-      popupChild.appendChild(popupCard);
-      popup.appendChild(popupChild);
-      commentsPop.appendChild(popup);
+      // comment
+      comments.addEventListener('click', (e) => {
+        e.preventDefault();
+        const commentsPop = document.querySelector('.comments-pop');
+        commentsPop.style.display = 'block';
+        const popup = document.createElement('div');
+        popup.classList.add('comment-popup');
+
+        const popupChild = document.createElement('div');
+        popupChild.classList.add('comment-child');
+
+        const popupCard = document.createElement('div');
+        popupCard.classList.add('popupCard');
+
+        const ImageDiv = document.createElement('div');
+        ImageDiv.classList.add('imagePopBox');
+
+        const popClose = document.createElement('div');
+        popClose.classList.add('popClose');
+        popClose.innerHTML = `
+     <i class='bx bx-x-circle bx-tad'></i>
+    `;
+
+        const imagePop = document.createElement('img');
+        imagePop.setAttribute('src', `${game.background_image}`);
+
+        popClose.addEventListener('click', () => {
+          commentsPop.style.display = 'none';
+        });
+
+        const title = document.createElement('span');
+        title.classList.add('titlePop');
+        title.innerText = `${game.name}`;
+
+        const details = document.createElement('div');
+        details.classList.add('details');
+        const detail = document.createElement('ul');
+        detail.classList.add('detail');
+        detail.innerHTML = `<li>released date: ${game.released}</li>
+    <li>playtime: ${game.playtime}</li>
+    <li>rating: ${game.rating}</li>
+    <li>Updated: ${game.updated}</li>`;
+
+        details.append(detail);
+
+        const commentsCard = document.createElement('div');
+        commentsCard.classList.add('comCard');
+        const comTitle = document.createElement('span');
+        comTitle.textContent = 'Comments';
+        const commentsShow = document.createElement('div');
+        commentsShow.classList.add('comShow');
+        commentsShow.innerHTML = `
+        <p id="comment" >Comment()</p>
+        <div class="Comments"></div>
+        `;
+
+        const addComment = document.createElement('div');
+        addComment.classList.add('addCom');
+
+        const addComTitle = document.createElement('span');
+        addComTitle.textContent = 'Add your comments';
+
+        //  creation of forms
+        const form = document.createElement('form');
+
+        const i = document.createElement('input');
+        i.setAttribute('type', 'text');
+        i.setAttribute('name', 'username');
+
+        const text = document.createElement('textarea');
+        text.setAttribute('type', 'text');
+        text.setAttribute('value', 'input comment');
+
+        const submit = document.createElement('input');
+        submit.classList.add('submit');
+        submit.setAttribute('type', 'submit');
+        submit.setAttribute('value', 'Submit');
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (text.value && i.value === '');
+          const data = {
+            item_id: `game${gameId}`,
+            username: i.value,
+            comment: text.value,
+          };
+          form.reset();
+          return data;
+        });
+        form.append(i, text, submit);
+        addComment.append(addComTitle, form);
+        commentsCard.append(comTitle, commentsShow, addComment);
+        ImageDiv.append(imagePop);
+        popupCard.append(ImageDiv, title, details, commentsCard, popClose);
+        popupChild.appendChild(popupCard);
+        popup.appendChild(popupChild);
+        commentsPop.appendChild(popup);
+      });
     });
-  });
+  };
+  getGameData();
 };
 
 export { loadCard, container };

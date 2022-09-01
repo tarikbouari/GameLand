@@ -1,11 +1,12 @@
 import './css/main.css';
 import './css/desktop.css';
 import './modules/menu.js';
+import { loadCard } from './modules/render.js';
+import countgame from './modules/counter.js';
 
-import getGame from './modules/api.js';
+loadCard();
 
-getGame();
-
+countgame();
 const myButton = document.getElementById('Btn');
 
 function scrollFunction() {
