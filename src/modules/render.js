@@ -145,15 +145,35 @@ const loadCard = () => {
 
         const getComment = async (gameId) => {
           const getApi = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/AFFSRiO8tq3BNoRoizLk/comments?item_id=${gameId}`;
-          const response = await fetch(getApi);
+          const request = new Request(getApi);
+          const response = await fetch(request);
           const data = await response.json();
           count = (data.length);
+          console.log(gameId);
           commentsShow.innerHTML = `
-          <p id="comment">Comment(${!count ? 0 : count})</p> 
+          <p id="comment">Comment(${!count ? '' : count})</p> 
           `;
+          // display comment on
+          // eslint-disable-next-line no-plusplus
+          for (let i = 0; i < data.length; i++) {
+            const CommentsDiv = document.createElement('div');
+            CommentsDiv.classList.add('commentsDiv');
+            const nameDiv = document.createElement('span');
+            const commentDiv = document.createElement('span');
+            const date = document.createElement('p');
+            // eslint-disable-next-line no-template-curly-in-string
+            nameDiv.textContent = `Username: ${data[i].username}`;
+            commentDiv.textContent = `Comment: ${data[i].comment}`;
+            date.textContent = `Creation_date: ${data[i].creation_date}`;
+            console.log(data[i].comment);
+            console.log(data[i].username);
+            console.log(data[i].creation_date);
+            CommentsDiv.append(nameDiv, commentDiv, date);
+            commentsShow.append(CommentsDiv);
+          }
         };
-
         getComment(gameId);
+
         const addComment = document.createElement('div');
         addComment.classList.add('addCom');
 
@@ -185,11 +205,13 @@ const loadCard = () => {
             comment: text.value,
           };
           PostComment(data);
-          // console.log(data);
-          // getComment(gameId);
-          // console.log(gameId)
+          commentsShow.innerHTML = '';
+          console.log(data);
+          getComment(gameId);
+          // console.log(getComment(gameId));
           form.reset();
         });
+
         form.append(i, text, submit);
         addComment.append(addComTitle, form);
         // commentsShow.append(CommentDiv);
