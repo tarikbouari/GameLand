@@ -1,12 +1,7 @@
-
-
 const container = document.getElementById('card-container');
 
 const loadCard = (games) => {
-
   games.forEach((game) => {
-
-
     const div = document.createElement('div');
     div.classList.add('box-card');
 
@@ -15,7 +10,7 @@ const loadCard = (games) => {
 
     const image = document.createElement('img');
     image.setAttribute('src', `${game.background_image}`);
-    
+
     divImg.appendChild(image);
     const box = document.createElement('div');
     box.classList.add('box-description', 'text-wrap');
@@ -37,85 +32,20 @@ const loadCard = (games) => {
 
     box.append(h3);
 
+    const comments = document.createElement('button');
+    comments.classList.add('btn-comment', 'mx-1');
+    comments.textContent = 'Comments';
 
-      const iconLike = document.createElement('span');
-      iconLike.classList.add('material-symbols-outlined');
-      iconLike.textContent = 'favorite';
+    const reservations = document.createElement('button');
+    reservations.classList.add('btn-reservation', 'mx-1');
+    reservations.textContent = 'Reservations';
 
-      const comments = document.createElement('button');
-      comments.classList.add('btn-comment', 'mx-1');
-      comments.textContent = 'Comments';
-  
-      const reservations = document.createElement('button');
-      reservations.classList.add('btn-reservation', 'mx-1');
-      reservations.textContent = 'Reservations';
-  
-      div.append(divImg, box, boxIcon, comments, reservations);
-  
-      container.appendChild(div);
+    box.append(h3);
 
+    div.append(divImg, box, boxIcon, comments, reservations);
 
-
-    const displaysLikes = async () => {
-      const storage = await getLikes();
-        storage.filter((item) => {
-          const game = `game${gameId}`;
-          if (item.item_id === game) {
-            span.textContent = `${item.likes} likes`;
-          }
-          return item.likes;
-        });
-      
-
-      displaysLikes();
-
-      boxIcon.append(iconLike, span);
-
-      box.append(h3);
-
-      const comments = document.createElement('button');
-      comments.classList.add('btn-comment', 'mx-1');
-      comments.textContent = 'Comments';
-
-      const reservations = document.createElement('button');
-      reservations.classList.add('btn-reservation', 'mx-1');
-      reservations.textContent = 'Reservations';
-
-      div.append(divImg, box, boxIcon, comments, reservations);
-
-      container.appendChild(div);
-      gameId += 1;
-
-      // function click likes buttom
-      iconLike.addEventListener('click', (e) => {
-        e.preventDefault();
-        postLikes({
-          item_id: `game${gameId}`,
-        });
-
-        // Async that get likes from API
-        const displaysLikes = async () => {
-          const storage = await getLikes();
-
-          storage.filter((item) => {
-            const game = `game${gameId}`;
-            if (item.item_id === game) {
-              span.textContent = `${item.likes} likes`;
-            }
-            return item.likes;
-          });
-        };
-
-        displaysLikes();  
-   
-   
-      })
+    container.appendChild(div);
+  });
 };
-
-  } )
-}
-
-
-
 
 export { loadCard, container };
