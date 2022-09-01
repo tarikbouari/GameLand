@@ -1,18 +1,6 @@
-
 import Post from './post.js';
 
 const container = document.getElementById('card-container');
-
-const getApi = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/AFFSRiO8tq3BNoRoizLk/comments?item_id=1';
-let count = 0;
-
-const getComment = async () => {
-  const response = await fetch(getApi);
-  const data = await response.json();
-  count = (data.length);
-};
-
-getComment();
 
 const loadCard = (games) => {
   games.forEach((game, id) => {
@@ -25,8 +13,7 @@ const loadCard = (games) => {
     const image = document.createElement('img');
     image.setAttribute('src', `${game.background_image}`);
 
-      const divImg = document.createElement('div');
-      divImg.classList.add('img-box');
+    divImg.appendChild(image);
 
     const box = document.createElement('div');
     box.classList.add('box-description', 'text-wrap');
@@ -46,9 +33,7 @@ const loadCard = (games) => {
     span.textContent = `${game.id} likes`;
     boxIcon.append(icon, span);
 
-      const iconLike = document.createElement('span');
-      iconLike.classList.add('material-symbols-outlined');
-      iconLike.textContent = 'favorite';
+    box.append(h3);
 
     const comments = document.createElement('button');
     comments.classList.add('btn-comment', 'mx-1');
@@ -58,15 +43,7 @@ const loadCard = (games) => {
     reservations.classList.add('btn-reservation', 'mx-1');
     reservations.textContent = 'Reservations';
 
-        storage.filter((item) => {
-          const game = `game${gameId}`;
-          if (item.item_id === game) {
-            span.textContent = `${item.likes} likes`;
-          }
-          return item.likes;
-        });
-      };
-      displaysLikes();
+    div.append(divImg, box, boxIcon, comments, reservations);
 
     container.appendChild(div);
 
@@ -122,9 +99,9 @@ const loadCard = (games) => {
       const commentsShow = document.createElement('div');
       commentsShow.classList.add('comShow');
       commentsShow.innerHTML = `
-       <p id="comment" >Comment(${count})</p>
-       <div class="Comments"></div>
-       `;
+      <p id="comment" >Comment()</p>
+      <div class="Comments"></div>
+      `;
 
       const addComment = document.createElement('div');
       addComment.classList.add('addCom');
@@ -157,7 +134,6 @@ const loadCard = (games) => {
           comment: text.value,
         };
         Post(data);
-        // getComment();
         form.reset();
       });
       form.append(i, text, submit);
