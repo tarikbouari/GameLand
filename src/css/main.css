@@ -41,30 +41,35 @@ header {
   align-items: center;
 }
 
-.logo{
+.logo {
   cursor: pointer;
-  position: ;
 }
-nav {
-  display: flex;
-  justify-content: space-between;
-}
-nav a {
-  transition: color 0.3s !important;
-  color: white !important;
-}
-nav a:hover {
-  cursor: pointer;
-  color: #00ef00 !important;
-}
+
 a {
   cursor: pointer !important;
   text-decoration: none;
 }
-#games:hover{
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  transition: color 0.3s !important;
+  color: white !important;
+}
+
+nav a:hover {
   cursor: pointer;
   color: #00ef00 !important;
 }
+
+#games:hover {
+  cursor: pointer;
+  color: #00ef00 !important;
+}
+
 .icon {
   width: 25px;
   height: 25px;
@@ -193,7 +198,6 @@ a {
 .material-symbols-outlined {
   color: #00ef00;
   cursor: pointer;
-  fill: 100;
 }
 
 /* comments */
