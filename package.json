@@ -6,7 +6,13 @@
   "scripts": {
     "build": "webpack --mode development",
     "start": "webpack serve --open",
-    "test": "jest --coverage"
+    "test": "jest",
+    "jest": {
+      "automock": false,
+      "setupFiles": [
+        "./setupJest.js"
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -20,7 +26,10 @@
   },
   "homepage": "https://github.com/tarikbouari/Kanban-Board#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^29.0.1",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -28,6 +37,7 @@
     "hint": "^7.1.1",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.0.1",
+    "jest-fetch-mock": "^3.0.3",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
