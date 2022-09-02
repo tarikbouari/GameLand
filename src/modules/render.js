@@ -48,6 +48,7 @@ const loadCard = () => {
           if (item.item_id === game) {
             span.textContent = `${item.likes} likes`;
           }
+
           return item.likes;
         });
       };
@@ -71,26 +72,33 @@ const loadCard = () => {
       gameId += 1;
 
       // function click likes buttom
-      iconLike.addEventListener('click', (e) => {
-        e.preventDefault();
-        postLikes({
-          item_id: `game${gameId}`,
-        });
 
-        // Async that get likes from API
-        const displaysLikes = async () => {
-          const storage = await getLikes();
-
-          storage.filter((item) => {
-            const game = `game${gameId}`;
-            if (item.item_id === game) {
-              span.textContent = `${item.likes} likes`;
-            }
-            return item.likes;
+      iconLike.addEventListener(
+        'click',
+        () => {
+          // e.preventDefault();
+          postLikes({
+            item_id: `game${gameId}`,
           });
-        };
-        displaysLikes();
-      });
+          // Async that get likes from API
+          const displaysLikes = async () => {
+            const storage = await getLikes();
+            // console.log(storage);
+
+            storage.filter((item) => {
+              const game = `game${gameId}`;
+              if (item.item_id === game) {
+                span.textContent = `${item.likes + 1} likes`;
+              }
+              return item.likes + 1;
+            });
+          };
+
+          displaysLikes();
+        },
+        { once: true },
+      );
+
       // comment
       comments.addEventListener('click', (e) => {
         e.preventDefault();
@@ -148,7 +156,7 @@ const loadCard = () => {
           const request = new Request(getApi);
           const response = await fetch(request);
           const data = await response.json();
-          count = (data.length);
+          count = data.length;
           commentsShow.innerHTML = `
           <p id="comment">Comment(${!count ? 0 : count})</p> 
           `;
