@@ -41,9 +41,33 @@ header {
   align-items: center;
 }
 
+.logo {
+  cursor: pointer;
+}
+
+a {
+  cursor: pointer !important;
+  text-decoration: none;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
+}
+
+nav a {
+  transition: color 0.3s !important;
+  color: white !important;
+}
+
+nav a:hover {
+  cursor: pointer;
+  color: #00ef00 !important;
+}
+
+#games:hover {
+  cursor: pointer;
+  color: #00ef00 !important;
 }
 
 .icon {
@@ -207,7 +231,7 @@ nav {
   margin-top: 25%;
   flex-direction: column;
   width: 350px;
-  height: 80%;
+  height: 90%;
   padding: 1em 0.4em;
   overflow-y: scroll;
   border-radius: 1em;

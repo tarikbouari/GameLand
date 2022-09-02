@@ -35,7 +35,7 @@ const loadCard = () => {
 
       const iconLike = document.createElement('span');
       iconLike.classList.add('material-symbols-outlined');
-      iconLike.textContent = 'favorite';
+      iconLike.innerHTML = '&#10084;';
 
       const span = document.createElement('span');
       span.classList.add('like-text');
@@ -76,6 +76,7 @@ const loadCard = () => {
       iconLike.addEventListener(
         'click',
         () => {
+          iconLike.style.color = '#fff';
           // e.preventDefault();
           postLikes({
             item_id: `game${gameId}`,
@@ -90,6 +91,7 @@ const loadCard = () => {
               if (item.item_id === game) {
                 span.textContent = `${item.likes + 1} likes`;
               }
+
               return item.likes + 1;
             });
           };
@@ -102,6 +104,8 @@ const loadCard = () => {
       // comment
       comments.addEventListener('click', (e) => {
         e.preventDefault();
+        const main = document.querySelector('main');
+        main.style.position = 'fixed';
         const commentsPop = document.querySelector('.comments-pop');
         commentsPop.style.display = 'block';
         const popup = document.createElement('div');
@@ -127,6 +131,7 @@ const loadCard = () => {
 
         popClose.addEventListener('click', () => {
           commentsPop.style.display = 'none';
+          main.style.position = 'initial';
         });
 
         const title = document.createElement('span');
@@ -180,7 +185,6 @@ const loadCard = () => {
               commentsShow.append(CommentsDiv);
             }
           }
-          return data;
         };
         getComment(gameId);
 

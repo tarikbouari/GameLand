@@ -7,6 +7,7 @@
     "build": "webpack --mode development",
     "start": "webpack serve --open",
     "test": "jest",
+    "deploy": "gh-pages -d dist",
     "jest": {
       "automock": false,
       "setupFiles": [
@@ -34,7 +35,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.26.0",
-    "hint": "^7.1.1",
+    "hint": "^2.0.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.0.1",
     "jest-fetch-mock": "^3.0.3",
@@ -44,9 +45,10 @@
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.21.0",
     "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.10.1"
   },
   "dependencies": {
-    "webpack-cli": "^4.10.0"
+    "gh-pages": "^4.0.0"
   }
 }
