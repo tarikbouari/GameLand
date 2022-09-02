@@ -27,7 +27,7 @@
 
   .banner {
     background-image: url('/images/league.jpg');
-    height: 40vh;
+    height: 72vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -39,7 +39,7 @@
     width: 60%;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     justify-content: center;
   }
 
