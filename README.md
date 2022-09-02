@@ -41,6 +41,12 @@
 ## use you preferd browser to run the file .html to get project website. to run in terminal / git :
 $ npm start
 
+## Screenshots
+
+![gameland](https://user-images.githubusercontent.com/104431739/188227473-56f89471-0681-4258-b6bc-eca9b6ea1f2f.PNG)
+
+![gameland 2](https://user-images.githubusercontent.com/104431739/188227570-35045011-ca58-49bc-9d23-ccad89ce3650.PNG)
+
 ## Live demo 
 [Coming Soon](#)
 
@@ -49,13 +55,13 @@ $ npm start
 
 ## Authors
 
-👤 **Tarik Bouari **
+👤 **Tarik Bouari**
 
 - GitHub: [@tarikbouari](https://github.com/tarikbouari)
 - Twitter: [@tarikbouari](https://twitter.com/TarikBouari)
 - LinkedIn: [tarikbouari](https://www.linkedin.com/in/tarik-bouari-44b7191a6/)
 
-👤 **Alena okolike **
+👤 **Alena okolike**
 
 - GitHub: [@summyalena](https://github.com/summyalena)
 - Twitter: [@Alenaokolike](https://twitter.com/Alenaokolike)
