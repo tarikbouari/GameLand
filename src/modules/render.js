@@ -172,6 +172,7 @@ const loadCard = () => {
               commentsShow.append(CommentsDiv);
             }
           }
+          return data;
         };
         getComment(gameId);
 
