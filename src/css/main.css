@@ -243,10 +243,8 @@ nav {
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  /* align-items: center; */
   overflow-y: scroll;
-  height: 350px;
+  height: 300px;
   padding: 0.1em 0.6em;
   margin-bottom: 2em;
   border: rgba(0, 239, 0, 0.452) 0.1em solid;
@@ -266,6 +264,16 @@ nav {
   border-bottom: none;
 }
 
+.font {
+  font-size: 0.9em;
+  color: rgba(236, 246, 255, 0.767);
+}
+
+.date {
+  font-size: 0.9em;
+  color: rgba(236, 246, 255, 0.767);
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -282,7 +290,7 @@ input {
 
 textarea {
   background: transparent;
-  padding: 0.9em 0;
+  padding: 0.2em 0;
   outline: none;
   color: var(--clr-fontcolor);
 }
