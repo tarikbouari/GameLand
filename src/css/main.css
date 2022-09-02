@@ -71,6 +71,38 @@ nav {
   top: 70px;
 }
 
+/* banner */
+
+.banner {
+  background-image: url('/images/league.jpg');
+  height: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem 1rem;
+  display: flex;
+}
+
+.left {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.left h1 {
+  font-size: 2rem;
+  width: 80%;
+}
+
+.left button {
+  width: fit-content;
+  padding: 0.3rem 2rem;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: #00ef00;
+}
+
 /* section-card */
 .card-container {
   display: grid;
@@ -88,6 +120,7 @@ nav {
   box-shadow: 4px 4px 25px #ecf6ff5f;
   transition: box-shadow 0.3s;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .box-card:hover {
@@ -140,6 +173,7 @@ nav {
 
 .material-symbols-outlined {
   color: #00ef00;
+  cursor: pointer;
 }
 
 /* comments */
