@@ -48,7 +48,7 @@ $ npm start
 ![gameland 2](https://user-images.githubusercontent.com/104431739/188227570-35045011-ca58-49bc-9d23-ccad89ce3650.PNG)
 
 ## Live demo 
-[Coming Soon](#)
+[Ckick here]( https://tarikbouari.github.io/GameLand/)
 
 ## Consume API
 [click here](https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/)
