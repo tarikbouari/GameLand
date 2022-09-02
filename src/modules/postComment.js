@@ -8,7 +8,6 @@ const PostComment = async (data) => {
     },
     body: JSON.stringify(data),
   });
-  console.log(data);
 };
 
 export default PostComment;
