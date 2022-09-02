@@ -24,7 +24,6 @@
     display: none;
   }
 
-
   .banner {
     background-image: url('/images/league.jpg');
     height: 72vh;
@@ -47,9 +46,11 @@
     font-size: 2rem;
     width: 80%;
   }
+
   .left p {
     width: 70%;
   }
+
   .left button {
     width: fit-content;
     padding: 0.3rem 2rem;
