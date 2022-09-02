@@ -109,6 +109,10 @@
     /* color: var(--clr-primary) ; */
   }
 
+  footer {
+    margin: 0;
+  }
+
   #Btn {
     display: none;
     position: fixed;
@@ -130,6 +134,24 @@
   .logo2 span {
     font-size: 1.2em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .comment-child {
+    background-color: rgba(19, 22, 25, 0.966);
+    position: relative;
+    display: flex;
+    top: 5%;
+    margin: 0 auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-direction: column;
+    width: 400px;
+    border-radius: 1em;
+    gap: 10px;
+  }
+
+  .detail {
+    font-size: 1em;
   }
 
   .copyright {

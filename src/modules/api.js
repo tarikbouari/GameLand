@@ -8,7 +8,7 @@ const getGame = async () => {
   return gameData;
 };
 
-// new indetifier
+// new identifier
 const id = 'AFFSRiO8tq3BNoRoizLk';
 const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${id}/likes/`;
 
