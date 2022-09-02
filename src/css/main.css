@@ -120,6 +120,7 @@ nav {
   box-shadow: 4px 4px 25px #ecf6ff5f;
   transition: box-shadow 0.3s;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .box-card:hover {
@@ -172,6 +173,7 @@ nav {
 
 .material-symbols-outlined {
   color: #00ef00;
+  cursor: pointer;
 }
 
 /* comments */
