@@ -89,10 +89,8 @@ const loadCard = () => {
               const game = `game${gameId}`;
               if (item.item_id === game) {
                 span.textContent = `${item.likes+1} likes`;
-                console.log(item.likes);
               }
-              // iconLike.disabled = true;
-              return item.likes;
+              return item.likes+1;
             });
           };
 
