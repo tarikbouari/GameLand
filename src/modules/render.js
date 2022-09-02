@@ -129,9 +129,9 @@ const loadCard = () => {
         details.classList.add('details');
         const detail = document.createElement('ul');
         detail.classList.add('detail');
-        detail.innerHTML = `<li>released date: ${game.released}</li>
-    <li>playtime: ${game.playtime}</li>
-    <li>rating: ${game.rating}</li>
+        detail.innerHTML = `<li>Released date: ${game.released}</li>
+    <li>Playtime: ${game.playtime}</li>
+    <li>Rating: ${game.rating}</li>
     <li>Updated: ${game.updated}</li>`;
 
         details.append(detail);
@@ -149,27 +149,28 @@ const loadCard = () => {
           const response = await fetch(request);
           const data = await response.json();
           count = (data.length);
-          console.log(gameId);
           commentsShow.innerHTML = `
-          <p id="comment">Comment(${!count ? '' : count})</p> 
+          <p id="comment">Comment(${!count ? 0 : count})</p> 
           `;
           // display comment on
           // eslint-disable-next-line no-plusplus
           for (let i = 0; i < data.length; i++) {
-            const CommentsDiv = document.createElement('div');
-            CommentsDiv.classList.add('commentsDiv');
-            const nameDiv = document.createElement('span');
-            const commentDiv = document.createElement('span');
-            const date = document.createElement('p');
-            // eslint-disable-next-line no-template-curly-in-string
-            nameDiv.textContent = `Username: ${data[i].username}`;
-            commentDiv.textContent = `Comment: ${data[i].comment}`;
-            date.textContent = `Creation_date: ${data[i].creation_date}`;
-            console.log(data[i].comment);
-            console.log(data[i].username);
-            console.log(data[i].creation_date);
-            CommentsDiv.append(nameDiv, commentDiv, date);
-            commentsShow.append(CommentsDiv);
+            if (count > 0 && data.length > 0) {
+              const CommentsDiv = document.createElement('div');
+              CommentsDiv.classList.add('commentsDiv');
+              const nameDiv = document.createElement('span');
+              const commentDiv = document.createElement('span');
+              const date = document.createElement('p');
+              nameDiv.classList.add('font');
+              commentDiv.classList.add('font');
+              date.classList.add('date');
+              // eslint-disable-next-line no-template-curly-in-string
+              nameDiv.textContent = `Username: ${data[i].username}`;
+              commentDiv.textContent = `Comment: ${data[i].comment}`;
+              date.textContent = `Creation_date: ${data[i].creation_date}`;
+              CommentsDiv.append(nameDiv, commentDiv, date);
+              commentsShow.append(CommentsDiv);
+            }
           }
         };
         getComment(gameId);
@@ -196,7 +197,7 @@ const loadCard = () => {
         submit.setAttribute('type', 'submit');
         submit.setAttribute('value', 'Submit');
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
           e.preventDefault();
           if (text.value && i.value === '');
           const data = {
@@ -204,14 +205,12 @@ const loadCard = () => {
             username: i.value,
             comment: text.value,
           };
-          PostComment(data);
+          await PostComment(data);
           commentsShow.innerHTML = '';
-          console.log(data);
+          // eslint-disable-next-line no-restricted-globals
           getComment(gameId);
-          // console.log(getComment(gameId));
           form.reset();
         });
-
         form.append(i, text, submit);
         addComment.append(addComTitle, form);
         // commentsShow.append(CommentDiv);
