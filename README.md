@@ -3,8 +3,8 @@
 #GameLand
 
 ## Description 
->GameLand is an online game website that allows users to view different kind of games available 
->and share their views on each game the like or dislike. Built with HTML/CSS , JAVASCRIPT,API.
+>GameLand is an online gaming web application that allows users to view different kind of games available 
+>and share their views on each game.Users can like and make reservations to play online. Built with HTML/CSS , JAVASCRIPT,API.
  
 
 
